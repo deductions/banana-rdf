@@ -1,10 +1,10 @@
-addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.3.0")
+// addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.3.0")
 
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
+// addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
 
-addSbtPlugin("com.eed3si9n" % "sbt-unidoc" % "0.3.3")
+// addSbtPlugin("com.eed3si9n" % "sbt-unidoc" % "0.3.3")
 
-addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.3")
+// addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.3")
 
 /**
   * Bintray pluging
@@ -24,7 +24,8 @@ addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.3")
   * @see http://www.scala-js.org/
   */
 
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.20")
+// addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.20")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.24")
 
 
 /**
@@ -33,7 +34,7 @@ addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.20")
   * for drawing a dependency tree
   * @see https://github.com/gilt/sbt-dependency-graph-sugar
   */
-addSbtPlugin("com.gilt" % "sbt-dependency-graph-sugar" % "0.7.5-1")
+// addSbtPlugin("com.gilt" % "sbt-dependency-graph-sugar" % "0.7.5-1")
 
 /**
   * scala-style
@@ -41,7 +42,7 @@ addSbtPlugin("com.gilt" % "sbt-dependency-graph-sugar" % "0.7.5-1")
   * for Scala style checking
   * @see http://www.scalastyle.org/
   */
-addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
+// addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
 
 
 /**
@@ -50,7 +51,7 @@ addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
   * better ivy alternative for dependency resolution
   * @see https://github.com/alexarchambault/coursier
   */
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M15-1")
+// addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M15-1")
 
 /**
   * sbt-updates
@@ -58,4 +59,4 @@ addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M15-1")
   * for easier dependency updates monitoring
   * @see https://github.com/rtimush/sbt-updates
   */
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.0")
+// addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.0")
