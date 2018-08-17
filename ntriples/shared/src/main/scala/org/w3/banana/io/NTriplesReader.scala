@@ -258,7 +258,7 @@ class NTriplesParser[Rdf <: RDF](reader: Reader,
       case 'r' => '\r'
       case 'f' => '\f'
       case '"' => '"'
-      case ''' => '''
+      case '\'' => '\''
       case '\\' => '\\'
       case 'u' => parseShortHex()
       case 'U' => parseLongHex()

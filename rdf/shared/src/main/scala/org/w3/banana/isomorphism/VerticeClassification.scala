@@ -76,7 +76,8 @@ case class CountingVC(forwardRels: Int,
  *
  * @param ops needed to calculate the hash of Nodes
  */
-case class SimpleHashVCBuilder[Rdf <: RDF](implicit ops: RDFOps[Rdf])
+// case class SimpleHashVCBuilder[Rdf <: RDF](implicit ops: RDFOps[Rdf])
+case class SimpleHashVCBuilder[Rdf <: RDF](ops: RDFOps[Rdf])
     extends VerticeCBuilder[Rdf] {
 
   val forwardRels = mutable.Map[Rdf#URI, Long]().withDefaultValue(0)
@@ -85,7 +86,7 @@ case class SimpleHashVCBuilder[Rdf <: RDF](implicit ops: RDFOps[Rdf])
 
   import ops._
 
-  def hashOf(node: Rdf#Node) = node.fold(_.hashCode, _ => bnodeValue, _.hashCode)
+  def hashOf(node: Rdf#Node) = node.fold(_.hashCode, _ => bnodeValue, _.hashCode)(ops)
 
   def setForwardRel(rel: Rdf#URI, obj: Rdf#Node): Unit =
     forwardRels.put(rel, (forwardRels(rel) + hashOf(obj)) % Long.MaxValue)
@@ -102,7 +103,7 @@ case class HashVC(forwardRels: Long,
 
 object VerticeCBuilder {
 
-  def simpleHash[Rdf <: RDF](implicit ops: RDFOps[Rdf]) = () => new SimpleHashVCBuilder[Rdf]()
+  def simpleHash[Rdf <: RDF](implicit ops: RDFOps[Rdf]) = () => new SimpleHashVCBuilder[Rdf](ops)
 
   def counting[Rdf <: RDF] = () => new CountingVCBuilder[Rdf]()
 
