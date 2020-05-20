@@ -9,17 +9,18 @@ import org.w3.banana._
 
 import scala.collection.JavaConverters._
 import scala.util._
+import org.apache.jena.query.Syntax
 
 class JenaSparqlOps(implicit jenaUtil: JenaUtil) extends SparqlOps[Jena] {
 
   def parseSelect(query: String, prefixes: Seq[Prefix[Jena]]): Try[Jena#SelectQuery] = Try {
-    val parsedQuery = QueryFactory.create(withPrefixes(query, prefixes))
+    val parsedQuery = QueryFactory.create(withPrefixes(query, prefixes), Syntax.syntaxARQ )
     assert(parsedQuery.isSelectType)
     parsedQuery
   }
 
   def parseConstruct(query: String, prefixes: Seq[Prefix[Jena]]): Try[Jena#ConstructQuery] = Try {
-    val parsedQuery = QueryFactory.create(withPrefixes(query, prefixes))
+    val parsedQuery = QueryFactory.create(withPrefixes(query, prefixes), Syntax.syntaxARQ)
     assert(parsedQuery.isConstructType)
     parsedQuery
   }
