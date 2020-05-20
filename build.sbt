@@ -70,10 +70,15 @@ lazy val publicationSettings = pomSettings ++ {
 
 lazy val commonSettings = publicationSettings ++ defaultScalariformSettings ++ Seq(
   organization := "org.w3",
-  scalaVersion := "2.12.6",
-  crossScalaVersions := Seq("2.11.12", "2.12.6"),
+  scalaVersion := "2.12.11",
+  crossScalaVersions := Seq("2.11.12", "2.12.11"),
   javacOptions ++= Seq("-source", "1.8", "-target", "1.8"),
-  resolvers += "apache-repo-releases" at "http://repository.apache.org/content/repositories/releases/",
+  resolvers += "apache-repo-releases" at "https://repository.apache.org/content/repositories/releases/",
+
+  // resolvers += "Typesafe Repo" at "http://repo.typesafe.com/typesafe/releases/",
+  // test jmv samedi 30 mars 2019, 12:36:03 (UTC+0100)
+  resolvers += Resolver.url("typesafe", url("https://repo.typesafe.com/typesafe/ivy-releases/"))(Resolver.ivyStylePatterns),
+
   fork := false,
   parallelExecution in Test := false,
   offline := true,
