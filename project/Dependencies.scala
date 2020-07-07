@@ -50,7 +50,8 @@ object Dependencies {
    * @see https://jena.apache.org/
    * @see http://repo1.maven.org/maven2/org/apache/jena
    */
-  val jenaLibs = "org.apache.jena" % "apache-jena-libs" % "3.15.0" // "3.8.0"
+  val jenaVersion = "3.15.0"
+  val jenaLibs = "org.apache.jena" % "apache-jena-libs" % jenaVersion // "3.8.0"
 
   /**
    * logback for jena
@@ -101,7 +102,7 @@ object Dependencies {
    * @see http://jena.apache.org/documentation/serving_data
    * @see http://repo1.maven.org/maven2/org/apache/jena/jena-fuseki/
    */
-  val fusekiVersion =  "3.8.0"
+  val fusekiVersion = "3.8.0"
   val fuseki = "org.apache.jena" % "apache-jena-fuseki" % fusekiVersion
   val fusekiServer = "org.apache.jena" % "jena-fuseki-server" % fusekiVersion
 
