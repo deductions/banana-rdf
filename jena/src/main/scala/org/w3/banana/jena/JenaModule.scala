@@ -56,7 +56,7 @@ trait JenaModule
 
   implicit val n3Writer: RDFWriter[Jena, Try, N3] = JenaRDFWriter.n3Writer
 
-  implicit val ntriplesWriter: RDFWriter[Jena, Try, NTriples] = new NTriplesWriter[Jena]
+  implicit val ntriplesWriter: RDFWriter[Jena, Try, NTriples] = JenaRDFWriter.ntriplesWriter // new NTriplesWriter[Jena]
 
   implicit val rdfLoader: RDFLoader[Jena, Try] = JenaRDFReader.rdfLoader
 

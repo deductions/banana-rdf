@@ -77,4 +77,5 @@ object JenaRDFWriter {
   val jsonldCompactedWriter: RDFWriter[Jena, Try, JsonLdCompacted] =
     makeRDFWriter[JsonLdCompacted](RDFLanguages.JSONLD)
 
+  val ntriplesWriter: RDFWriter[Jena, Try, NTriples] = makeRDFWriter[NTriples](RDFLanguages.NTRIPLES)
 }
