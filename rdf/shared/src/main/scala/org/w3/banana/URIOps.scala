@@ -40,7 +40,11 @@ trait DefaultURIOps[Rdf <: RDF] extends URIOps[Rdf] { ops: RDFOps[Rdf] =>
     val uriString = ops.fromUri(uri)
     val juri = new jURI(uriString)
     import juri._
-    val uriNoFrag = new jURI(getScheme, getUserInfo, getHost, getPort, getPath, getQuery, null)
+    val ssp = juri.getRawSchemeSpecificPart
+    val uriNoFrag = if(ssp == null)
+      new jURI(getScheme, getUserInfo, getHost, getPort, getPath, getQuery, null)
+    else
+      new jURI(getScheme, ssp, null)
     ops.makeUri(uriNoFrag.toString)
   }
 
