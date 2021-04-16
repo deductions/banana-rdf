@@ -4,6 +4,8 @@ import org.apache.jena.graph.{ Node => JenaNode }
 import org.apache.jena.query.{ QueryFactory, Query => JenaQuery }
 import org.apache.jena.rdf.model.RDFNode
 import org.apache.jena.update.UpdateFactory
+import org.apache.jena.query.QueryType
+
 import org.w3.banana.SparqlOps.withPrefixes
 import org.w3.banana._
 
@@ -44,10 +46,12 @@ class JenaSparqlOps(implicit jenaUtil: JenaUtil) extends SparqlOps[Jena] {
       select: Jena#SelectQuery => T,
       construct: Jena#ConstructQuery => T,
       ask: Jena#AskQuery => T) =
-    query.getQueryType match {
-      case JenaQuery.QueryTypeSelect => select(query)
-      case JenaQuery.QueryTypeConstruct => construct(query)
-      case JenaQuery.QueryTypeAsk => ask(query)
+    // DESCRIBE, TODO?
+    query.queryType match {
+      case QueryType.SELECT => select(query)
+      case QueryType.CONSTRUCT => construct(query)
+      case QueryType.ASK => ask(query)
+      case _ => throw new NotImplementedError("todo: match not exhaustive. It would fail on the following inputs: CONSTRUCT_JSON, CONSTRUCT_QUADS, DESCRIBE, UNKNOWN ")
     }
 
   def getNode(solution: Jena#Solution, v: String): Try[Jena#Node] = {
