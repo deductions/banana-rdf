@@ -2,7 +2,6 @@ package org.w3.banana.jena
 package io
 
 import org.apache.jena.graph.{Node => JenaNode, Triple => JenaTriple, _}
-import org.apache.jena.rdf.model.{RDFReader => _}
 import org.apache.jena.riot.RDFParser
 
 import java.io._

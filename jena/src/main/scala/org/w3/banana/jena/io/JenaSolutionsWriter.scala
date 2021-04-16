@@ -3,6 +3,7 @@ package org.w3.banana.jena.io
 import java.io._
 import org.w3.banana._, io._, jena._
 import scala.util._
+import org.apache.jena.riot.ResultSetMgr
 
 object JenaSolutionsWriter {
 
@@ -12,12 +13,12 @@ object JenaSolutionsWriter {
   ): SparqlSolutionsWriter[Jena, T] = new SparqlSolutionsWriter[Jena, T] {
 
     def write(answers: Jena#Solutions, os: OutputStream, base: String) = Try {
-      jenaSparqlSyntax.formatter.format(os, answers)
+      ResultSetMgr.write(os, answers, jenaSparqlSyntax.format)
     }
 
     def asString(answers: Jena#Solutions, base: String): Try[String] = Try {
       val result = new ByteArrayOutputStream()
-      jenaSparqlSyntax.formatter.format(result, answers)
+      ResultSetMgr.write(result, answers, jenaSparqlSyntax.format)
       answers.toString
     }
   }
